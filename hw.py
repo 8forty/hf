@@ -6,10 +6,15 @@ def sa():
     model = "cardiffnlp/twitter-roberta-base-sentiment-latest"
     p = pipeline(task="sentiment-analysis", model=model)
 
-    text = "Love this!"
-    response = p(text)
-    print(f"text: {text}")
-    print(f"model[{model}] response: {response}")
+    texts = ["This is great",
+             "Thanks for nothing",
+             "You've got to work on your face",
+             "You're beautiful, never change!"
+             ]
+    responses = p(texts)
+    print(f"model[{model}] response:")
+    for r in zip(texts, responses):
+        print(f"  {r[0]}: {r[1]}")
 
 
 def main():
