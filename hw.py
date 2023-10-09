@@ -2,8 +2,8 @@ from transformers import pipeline
 
 
 def sa():
-    model = "distilbert-base-uncased-finetuned-sst-2-english"
-    # model = "lysandre/dum"
+    # model = "distilbert-base-uncased-finetuned-sst-2-english"
+    model = "cardiffnlp/twitter-roberta-base-sentiment-latest"
     p = pipeline(task="sentiment-analysis", model=model)
 
     text = "Love this!"
