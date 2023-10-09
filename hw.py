@@ -1,4 +1,4 @@
-from transformers import pipeline
+from transformers import pipeline, Conversation
 
 
 def text_classification():
@@ -39,9 +39,28 @@ def summarization():
     print(f"model[{model}] summarized text: {summarized_text}")
 
 
+def chatbot():
+    prompts = [
+        "Hi I'm Zoltan, how are you?",
+        "Where do you work?",
+        "Are you happy?"
+    ]
+
+    model = "facebook/blenderbot-400M-distill"
+    chat = pipeline(model=model, max_length=100)
+    conversation = Conversation()
+    for p in prompts:
+        conversation.add_user_input(p)
+        print(f"user: {p}")
+        response = chat(conversation)
+        print(f"bot >> {response.generated_responses[-1]}")
+
+
 def main():
     # text_classification()
-    summarization()
+    # summarization()
+
+    chatbot()
 
     print("done")
 
